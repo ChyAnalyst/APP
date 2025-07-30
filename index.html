@@ -7,22 +7,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --federal-blue: #03045e;
-      --marian-blue: #023e8a;
-      --honolulu-blue: #0077b6;
-      --blue-green: #0096c7;
-      --pacific-cyan: #00b4d8;
-      --vivid-sky-blue: #48cae4;
-      --non-photo-blue: #90e0ef;
-      --non-photo-blue-2: #ade8f4;
-      --light-cyan: #caf0f8;
+      --russian-violet: #231942;
+      --ultra-violet: #5e548e;
+      --african-violet: #9f86c0;
+      --lilac: #be95c4;
+      --pink-lavender: #e0b1cb;
+      --correct-green: #4caf50;
+      --wrong-red: #e63946;
+      --white: #ffffff;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, var(--federal-blue), var(--honolulu-blue));
-      color: var(--light-cyan);
+      background: linear-gradient(135deg, var(--russian-violet), var(--ultra-violet));
+      color: var(--white);
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -31,11 +30,10 @@
     }
 
     .quiz-container {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 25px;
       padding: 30px 25px;
-      max-width: 600px;
+      max-width: 650px;
       width: 100%;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
       backdrop-filter: blur(12px);
@@ -49,23 +47,30 @@
     }
 
     h1 {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       font-weight: 700;
       font-size: 2rem;
-      color: var(--non-photo-blue-2);
+      color: var(--pink-lavender);
+    }
+
+    .tracker {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
     }
 
     .progress {
-      height: 18px;
-      background: var(--non-photo-blue-2);
-      border-radius: 9px;
+      height: 22px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
       overflow: hidden;
       margin-bottom: 25px;
-      border: 2px solid var(--marian-blue);
+      border: 3px solid var(--white);
     }
     .progress-bar {
       height: 100%;
-      background: linear-gradient(135deg, var(--blue-green), var(--pacific-cyan));
+      background: linear-gradient(135deg, var(--pink-lavender), var(--african-violet));
       width: 0;
       transition: width 0.4s ease;
     }
@@ -74,52 +79,53 @@
       font-size: 1.3rem;
       margin-bottom: 25px;
       line-height: 1.5;
-      font-weight: 500;
-      color: var(--light-cyan);
+      font-weight: 600;
+      color: var(--white);
     }
 
     .answers {
       list-style: none;
       margin-bottom: 25px;
+      padding: 0;
     }
-    .answers li { margin: 10px 0; }
+    .answers li { margin: 15px 0; }
 
     .answers button {
       width: 100%;
-      padding: 15px 20px;
+      padding: 18px;
       font-size: 1rem;
-      background: var(--light-cyan);
-      border: 2px solid var(--marian-blue);
-      border-radius: 12px;
-      color: var(--marian-blue);
+      background: var(--white);
+      border: none;
+      border-radius: 50px;
+      color: var(--ultra-violet);
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
     .answers button:hover {
-      background: var(--vivid-sky-blue);
-      color: var(--federal-blue);
-      transform: translateY(-2px);
+      background: var(--pink-lavender);
+      color: var(--russian-violet);
+      transform: translateY(-3px);
     }
-    .answers button:active { transform: scale(0.97); }
 
     #next, #restart {
-      background: linear-gradient(135deg, var(--marian-blue), var(--blue-green));
+      background: linear-gradient(135deg, var(--african-violet), var(--ultra-violet));
       border: none;
       padding: 15px 30px;
       font-size: 1rem;
       border-radius: 50px;
       cursor: pointer;
-      color: #fff;
+      color: var(--white);
       font-weight: 600;
       transition: all 0.3s ease;
       margin-top: 15px;
-      box-shadow: 0 5px 15px rgba(2, 62, 138, 0.4);
+      box-shadow: 0 5px 15px rgba(35, 25, 66, 0.4);
     }
     #next:hover, #restart:hover {
       transform: scale(1.05);
-      background: var(--honolulu-blue);
+      background: var(--pink-lavender);
+      color: var(--russian-violet);
     }
     #restart { display: none; }
 
@@ -127,7 +133,7 @@
       margin-top: 15px;
       font-size: 1.1rem;
       font-weight: 600;
-      color: var(--non-photo-blue);
+      color: var(--pink-lavender);
     }
 
     @media(max-width: 600px) {
@@ -140,6 +146,7 @@
 <body>
   <div class="quiz-container">
     <h1>Bible Trivia Quiz</h1>
+    <div class="tracker" id="tracker">Question 1 of ...</div>
     <div class="progress"><div class="progress-bar"></div></div>
     <div id="quiz">
       <p class="question">Loading question...</p>
@@ -157,6 +164,7 @@
     const nextBtn = document.getElementById('next');
     const restartBtn = document.getElementById('restart');
     const progressBar = document.querySelector('.progress-bar');
+    const trackerEl = document.getElementById('tracker');
 
     let currentQuestion = {};
     let score = 0;
@@ -172,7 +180,7 @@
 
     async function fetchQuestions() {
       try {
-        const res = await fetch('https://chyanalyst.github.io/APP/bible-trivia.json');
+        const res = await fetch('https://chyanalyst.github.io/APP/bible.json');
         questions = await res.json();
         shuffleArray(questions);
         loadQuestion();
@@ -191,10 +199,12 @@
         nextBtn.style.display = 'none';
         restartBtn.style.display = 'inline-block';
         progressBar.style.width = "100%";
+        trackerEl.innerHTML = "Quiz Completed!";
         return;
       }
 
       currentQuestion = questions[questionIndex];
+      trackerEl.innerHTML = `Question ${questionIndex + 1} of ${questions.length}`;
       questionEl.innerHTML = currentQuestion.question;
 
       const answers = [...currentQuestion.incorrect_answers];
@@ -218,16 +228,16 @@
       const correct = answer === currentQuestion.correct_answer;
       if (correct) {
         score++;
-        btn.style.background = '#00b359'; // green
+        btn.style.background = 'var(--correct-green)';
         btn.style.color = "#fff";
         feedbackEl.innerHTML = "✅ Correct!";
       } else {
-        btn.style.background = '#e63946'; // red
+        btn.style.background = 'var(--wrong-red)';
         btn.style.color = "#fff";
         feedbackEl.innerHTML = `❌ Wrong! Correct: <strong>${currentQuestion.correct_answer}</strong>`;
         document.querySelectorAll('.answers button').forEach(b => {
           if (b.innerHTML === currentQuestion.correct_answer) {
-            b.style.background = '#00b359';
+            b.style.background = 'var(--correct-green)';
             b.style.color = "#fff";
           }
         });
@@ -252,6 +262,7 @@
       nextBtn.style.display = 'inline-block';
       restartBtn.style.display = 'none';
       progressBar.style.width = "0%";
+      trackerEl.innerHTML = `Question 1 of ${questions.length}`;
       loadQuestion();
     });
 
