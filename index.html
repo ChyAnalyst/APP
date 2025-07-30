@@ -1,64 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bible Trivia Quiz</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #1f1c2c, #928dab);
       color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 20px;
     }
     .quiz-container {
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 20px;
-      padding: 30px;
+      padding: 40px 30px;
       max-width: 600px;
       width: 100%;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
       text-align: center;
-      box-shadow: 0 8px 32px rgba(31,38,135,0.37);
     }
-    h1 { margin-bottom: 20px; }
-    #progress { margin-bottom: 15px; }
-    .question { font-size: 1.2rem; margin-bottom: 20px; }
-    .answers { list-style: none; padding: 0; margin-bottom: 20px; }
-    .answers li { margin: 10px 0; }
+    h1 {
+      margin-bottom: 20px;
+      font-weight: 600;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+    .question {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+    .answers {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 30px;
+    }
+    .answers li {
+      margin: 10px 0;
+    }
     .answers button {
-      width: 100%; padding: 12px;
-      border-radius: 12px; border: none;
-      background: rgba(255,255,255,0.1);
-      color: #fff; font-size: 1rem;
-      cursor: pointer; transition: 0.3s;
+      width: 100%;
+      padding: 15px 20px;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
-    .answers button:hover { background: rgba(255,255,255,0.3); }
+    .answers button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
     #next, #restart {
+      background: #ff6b6b;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      color: #fff;
+      font-weight: 600;
+      transition: all 0.3s ease;
       margin-top: 10px;
-      padding: 12px 24px;
-      border: none; border-radius: 50px;
-      background: #ff6b6b; color: #fff;
-      font-size: 1rem; font-weight: bold;
-      cursor: pointer; transition: 0.3s;
     }
-    #next:hover, #restart:hover { background: #ff4757; }
-    #restart { display: none; }
+    #next:hover, #restart:hover {
+      background: #ff4757;
+      transform: scale(1.05);
+    }
+    #restart {
+      display: none;
+    }
+    @media(max-width: 600px) {
+      .quiz-container {
+        padding: 30px 20px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="quiz-container">
     <h1>Bible Trivia Quiz</h1>
-    <p id="progress">Loading questions...</p>
-    <p class="question"></p>
-    <ul class="answers"></ul>
-    <button id="next">Next</button>
-    <button id="restart">Restart Quiz</button>
+    <div id="quiz">
+      <p class="question">Loading question...</p>
+      <ul class="answers"></ul>
+      <button id="next">Next Question</button>
+      <button id="restart">Restart Quiz</button>
+    </div>
   </div>
 
   <script>
@@ -66,85 +107,80 @@
     const answersEl = document.querySelector('.answers');
     const nextBtn = document.getElementById('next');
     const restartBtn = document.getElementById('restart');
-    const progressEl = document.getElementById('progress');
 
-    let questions = [];
     let currentQuestion = {};
     let score = 0;
     let questionIndex = 0;
+    let questions = [];
 
-    async function fetchQuestions() {
-      try {
-        progressEl.textContent = "⏳ Fetching questions...";
-        const res = await fetch("https://chyanalyst.github.io/APP/bibletrivia.json");
-        if (!res.ok) throw new Error("HTTP error " + res.status);
-        questions = await res.json();
-        console.log("Questions loaded:", questions.length);
-        if (!Array.isArray(questions)) throw new Error("Invalid JSON structure");
-        questionIndex = 0;
-        score = 0;
-        loadQuestion();
-      } catch (err) {
-        console.error("❌ Error loading questions:", err);
-        progressEl.textContent = "❌ Could not load questions. Check console.";
-        nextBtn.style.display = "none";
+    // Shuffle function
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
       }
     }
 
+    async function fetchQuestions() {
+      const res = await fetch('https://chyanalyst.github.io/APP/bible.json');
+      questions = await res.json();
+      shuffleArray(questions);
+      loadQuestion();
+    }
+
     function loadQuestion() {
+      clearAnswers();
       if (questionIndex >= questions.length) {
-        questionEl.innerHTML = `🎉 You scored <strong>${score}</strong> out of <strong>${questions.length}</strong>`;
-        progressEl.textContent = "";
-        answersEl.innerHTML = "";
-        nextBtn.style.display = "none";
-        restartBtn.style.display = "inline-block";
+        questionEl.innerHTML = `🎉 <br> You scored <strong>${score}</strong> out of <strong>${questions.length}</strong>`;
+        nextBtn.style.display = 'none';
+        restartBtn.style.display = 'inline-block';
         return;
       }
 
       currentQuestion = questions[questionIndex];
-      progressEl.textContent = `Question ${questionIndex + 1} of ${questions.length}`;
-      questionEl.textContent = currentQuestion.question;
-      answersEl.innerHTML = "";
+      questionEl.innerHTML = currentQuestion.question;
 
-      const answers = [...currentQuestion.incorrect_answers, currentQuestion.correct_answer];
-      answers.sort(() => Math.random() - 0.5);
+      const answers = [...currentQuestion.incorrect_answers];
+      answers.splice(Math.floor(Math.random() * (answers.length + 1)), 0, currentQuestion.correct_answer);
 
       answers.forEach(answer => {
-        const li = document.createElement("li");
-        const btn = document.createElement("button");
-        btn.textContent = answer;
-        btn.onclick = () => selectAnswer(answer, btn);
+        const li = document.createElement('li');
+        const btn = document.createElement('button');
+        btn.innerHTML = answer;
+        btn.addEventListener('click', () => selectAnswer(answer, btn));
         li.appendChild(btn);
         answersEl.appendChild(li);
       });
+    }
+
+    function clearAnswers() {
+      answersEl.innerHTML = '';
     }
 
     function selectAnswer(answer, btn) {
       const correct = answer === currentQuestion.correct_answer;
       if (correct) {
         score++;
-        btn.style.background = "#2ed573";
+        btn.style.background = '#2ed573';
       } else {
-        btn.style.background = "#ff4757";
-        [...answersEl.querySelectorAll("button")].forEach(b => {
-          if (b.textContent === currentQuestion.correct_answer) {
-            b.style.background = "#2ed573";
-          }
-        });
+        btn.style.background = '#ff4757';
       }
-      [...answersEl.querySelectorAll("button")].forEach(b => b.disabled = true);
+      document.querySelectorAll('.answers button').forEach(b => b.disabled = true);
     }
 
-    nextBtn.onclick = () => {
+    nextBtn.addEventListener('click', () => {
       questionIndex++;
       loadQuestion();
-    };
+    });
 
-    restartBtn.onclick = () => {
-      restartBtn.style.display = "none";
-      nextBtn.style.display = "inline-block";
-      fetchQuestions();
-    };
+    restartBtn.addEventListener('click', () => {
+      score = 0;
+      questionIndex = 0;
+      shuffleArray(questions);
+      nextBtn.style.display = 'inline-block';
+      restartBtn.style.display = 'none';
+      loadQuestion();
+    });
 
     fetchQuestions();
   </script>
