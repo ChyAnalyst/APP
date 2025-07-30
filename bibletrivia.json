@@ -1,0 +1,736 @@
+[
+  {
+    "question": "Who was the first man created?",
+    "correct_answer": "Adam",
+    "incorrect_answers": ["Noah", "Moses", "Abraham"]
+  },
+  {
+    "question": "Who was the first woman?",
+    "correct_answer": "Eve",
+    "incorrect_answers": ["Sarah", "Mary", "Rachel"]
+  },
+  {
+    "question": "What fruit did Adam and Eve eat in the Garden of Eden?",
+    "correct_answer": "Forbidden fruit",
+    "incorrect_answers": ["Apple", "Grapes", "Fig"]
+  },
+  {
+    "question": "Who built the ark to survive the flood?",
+    "correct_answer": "Noah",
+    "incorrect_answers": ["Moses", "Abraham", "Jacob"]
+  },
+  {
+    "question": "How many days did it rain during the flood?",
+    "correct_answer": "40 days and 40 nights",
+    "incorrect_answers": ["7 days", "30 days", "100 days"]
+  },
+  {
+    "question": "What was the name of Abraham’s son with Sarah?",
+    "correct_answer": "Isaac",
+    "incorrect_answers": ["Ishmael", "Jacob", "Esau"]
+  },
+  {
+    "question": "Who received the Ten Commandments from God?",
+    "correct_answer": "Moses",
+    "incorrect_answers": ["Noah", "David", "Solomon"]
+  },
+  {
+    "question": "Where did Moses receive the Ten Commandments?",
+    "correct_answer": "Mount Sinai",
+    "incorrect_answers": ["Mount Zion", "Mount Carmel", "Mount Ararat"]
+  },
+  {
+    "question": "Who was swallowed by a great fish?",
+    "correct_answer": "Jonah",
+    "incorrect_answers": ["Daniel", "Joseph", "Peter"]
+  },
+  {
+    "question": "Who was thrown into a lion’s den?",
+    "correct_answer": "Daniel",
+    "incorrect_answers": ["David", "Paul", "Jeremiah"]
+  },
+  {
+    "question": "What shepherd boy killed the giant Goliath?",
+    "correct_answer": "David",
+    "incorrect_answers": ["Saul", "Solomon", "Samuel"]
+  },
+  {
+    "question": "Who was the wisest king of Israel?",
+    "correct_answer": "Solomon",
+    "incorrect_answers": ["David", "Saul", "Josiah"]
+  },
+  {
+    "question": "Who betrayed Jesus for 30 pieces of silver?",
+    "correct_answer": "Judas Iscariot",
+    "incorrect_answers": ["Peter", "John", "Thomas"]
+  },
+  {
+    "question": "What was the first miracle of Jesus?",
+    "correct_answer": "Turning water into wine",
+    "incorrect_answers": ["Walking on water", "Healing a leper", "Feeding 5000 people"]
+  },
+  {
+    "question": "How many disciples did Jesus have?",
+    "correct_answer": "12",
+    "incorrect_answers": ["10", "11", "14"]
+  },
+  {
+    "question": "Who denied Jesus three times?",
+    "correct_answer": "Peter",
+    "incorrect_answers": ["John", "Andrew", "James"]
+  },
+  {
+    "question": "Who baptized Jesus?",
+    "correct_answer": "John the Baptist",
+    "incorrect_answers": ["Peter", "Paul", "Andrew"]
+  },
+  {
+    "question": "Where was Jesus born?",
+    "correct_answer": "Bethlehem",
+    "incorrect_answers": ["Nazareth", "Jerusalem", "Capernaum"]
+  },
+  {
+    "question": "Who was the mother of Jesus?",
+    "correct_answer": "Mary",
+    "incorrect_answers": ["Elizabeth", "Martha", "Sarah"]
+  },
+  {
+    "question": "What is the last book of the Bible?",
+    "correct_answer": "Revelation",
+    "incorrect_answers": ["Acts", "Romans", "Psalms"]
+  },
+  {
+    "question": "Who led the Israelites into the Promised Land?",
+    "correct_answer": "Joshua",
+    "incorrect_answers": ["Moses", "Caleb", "Gideon"]
+  },
+  {
+    "question": "Who was the first king of Israel?",
+    "correct_answer": "Saul",
+    "incorrect_answers": ["David", "Solomon", "Samuel"]
+  },
+  {
+    "question": "Who killed Abel?",
+    "correct_answer": "Cain",
+    "incorrect_answers": ["Lamech", "Esau", "Ishmael"]
+  },
+  {
+    "question": "How many plagues did God send on Egypt?",
+    "correct_answer": "10",
+    "incorrect_answers": ["7", "12", "5"]
+  },
+  {
+    "question": "What sea did Moses part?",
+    "correct_answer": "Red Sea",
+    "incorrect_answers": ["Dead Sea", "Jordan River", "Mediterranean Sea"]
+  },
+  {
+    "question": "What was Paul’s name before conversion?",
+    "correct_answer": "Saul",
+    "incorrect_answers": ["Peter", "Silas", "Barnabas"]
+  },
+  {
+    "question": "Who wrote most of the Psalms?",
+    "correct_answer": "David",
+    "incorrect_answers": ["Solomon", "Moses", "Asaph"]
+  },
+  {
+    "question": "Who was thrown into a fiery furnace?",
+    "correct_answer": "Shadrach, Meshach, and Abednego",
+    "incorrect_answers": ["Daniel", "Elijah", "Ezra"]
+  },
+  {
+    "question": "What is the first book of the New Testament?",
+    "correct_answer": "Matthew",
+    "incorrect_answers": ["Mark", "Luke", "John"]
+  },
+  {
+    "question": "Who was the oldest man recorded in the Bible?",
+    "correct_answer": "Methuselah",
+    "incorrect_answers": ["Noah", "Adam", "Jared"]
+  },
+  {
+    "question": "What is the first book of the Bible?",
+    "correct_answer": "Genesis",
+    "incorrect_answers": ["Exodus", "Leviticus", "Numbers"]
+  },
+  {
+    "question": "Who was the strong man betrayed by Delilah?",
+    "correct_answer": "Samson",
+    "incorrect_answers": ["David", "Saul", "Gideon"]
+  },
+  {
+    "question": "What prophet was taken up to heaven in a whirlwind?",
+    "correct_answer": "Elijah",
+    "incorrect_answers": ["Elisha", "Isaiah", "Jeremiah"]
+  },
+  {
+    "question": "Who was known as the weeping prophet?",
+    "correct_answer": "Jeremiah",
+    "incorrect_answers": ["Isaiah", "Ezekiel", "Hosea"]
+  },
+  {
+    "question": "Who was thrown into a pit of lions by King Darius?",
+    "correct_answer": "Daniel",
+    "incorrect_answers": ["Joseph", "Elijah", "Jonah"]
+  },
+  {
+    "question": "Who was the father of John the Baptist?",
+    "correct_answer": "Zechariah",
+    "incorrect_answers": ["Joseph", "Simeon", "Jairus"]
+  },
+  {
+    "question": "Who was the first person to see the risen Jesus?",
+    "correct_answer": "Mary Magdalene",
+    "incorrect_answers": ["Peter", "John", "James"]
+  },
+  {
+    "question": "What disciple was a tax collector?",
+    "correct_answer": "Matthew",
+    "incorrect_answers": ["Luke", "Peter", "Philip"]
+  },
+  {
+    "question": "What is the shortest verse in the Bible?",
+    "correct_answer": "Jesus wept.",
+    "incorrect_answers": ["Pray without ceasing.", "The Lord is my shepherd.", "God is love."]
+  },
+  {
+    "question": "Who built the temple in Jerusalem?",
+    "correct_answer": "Solomon",
+    "incorrect_answers": ["David", "Moses", "Ezra"]
+  },
+  {
+    "question": "Who was swallowed by a fish for three days?",
+    "correct_answer": "Jonah",
+    "incorrect_answers": ["Peter", "Paul", "John"]
+  },
+  {
+    "question": "How many people were on Noah’s ark?",
+    "correct_answer": "8",
+    "incorrect_answers": ["6", "10", "12"]
+  },
+  {
+    "question": "What was the name of Isaac’s wife?",
+    "correct_answer": "Rebekah",
+    "incorrect_answers": ["Rachel", "Leah", "Sarah"]
+  },
+  {
+    "question": "Who interpreted Pharaoh’s dreams?",
+    "correct_answer": "Joseph",
+    "incorrect_answers": ["Moses", "Daniel", "Aaron"]
+  },
+  {
+    "question": "How many days and nights did Jesus fast in the wilderness?",
+    "correct_answer": "40",
+    "incorrect_answers": ["30", "20", "7"]
+  },
+  {
+    "question": "What bird did Noah send out of the ark first?",
+    "correct_answer": "Raven",
+    "incorrect_answers": ["Dove", "Sparrow", "Eagle"]
+  },
+  {
+    "question": "What bird returned with an olive leaf?",
+    "correct_answer": "Dove",
+    "incorrect_answers": ["Raven", "Eagle", "Pigeon"]
+  },
+  {
+    "question": "What was the name of Abraham’s nephew?",
+    "correct_answer": "Lot",
+    "incorrect_answers": ["Ishmael", "Esau", "Laban"]
+  },
+  {
+    "question": "Who anointed Saul as king?",
+    "correct_answer": "Samuel",
+    "incorrect_answers": ["Nathan", "Eli", "David"]
+  },
+  {
+    "question": "Who was the giant killed by David?",
+    "correct_answer": "Goliath",
+    "incorrect_answers": ["Og", "Saul", "Ishbi-benob"]
+  },
+  {
+    "question": "What river was Jesus baptized in?",
+    "correct_answer": "Jordan",
+    "incorrect_answers": ["Nile", "Euphrates", "Tigris"]
+  },
+  {
+    "question": "Which apostle was a doctor?",
+    "correct_answer": "Luke",
+    "incorrect_answers": ["Paul", "John", "Thomas"]
+  },
+  {
+    "question": "Who doubted Jesus’ resurrection until he saw Him?",
+    "correct_answer": "Thomas",
+    "incorrect_answers": ["Peter", "James", "Philip"]
+  },
+  {
+    "question": "Who betrayed Jesus with a kiss?",
+    "correct_answer": "Judas Iscariot",
+    "incorrect_answers": ["Peter", "Caiaphas", "Pilate"]
+  },
+  {
+    "question": "What was the name of the sea where Jesus calmed the storm?",
+    "correct_answer": "Sea of Galilee",
+    "incorrect_answers": ["Dead Sea", "Red Sea", "Mediterranean Sea"]
+  },
+  {
+    "question": "What was the profession of Peter before following Jesus?",
+    "correct_answer": "Fisherman",
+    "incorrect_answers": ["Tax collector", "Carpenter", "Shepherd"]
+  },
+  {
+    "question": "How many loaves and fishes did Jesus use to feed 5000?",
+    "correct_answer": "5 loaves and 2 fish",
+    "incorrect_answers": ["7 loaves and 3 fish", "10 loaves and 5 fish", "3 loaves and 4 fish"]
+  },
+  {
+    "question": "Which apostle denied Jesus three times?",
+    "correct_answer": "Peter",
+    "incorrect_answers": ["John", "Thomas", "James"]
+  },
+  {
+    "question": "Who wrote most of the New Testament letters?",
+    "correct_answer": "Paul",
+    "incorrect_answers": ["Peter", "John", "Luke"]
+  },
+  {
+    "question": "Where did Jesus grow up?",
+    "correct_answer": "Nazareth",
+    "incorrect_answers": ["Bethlehem", "Jerusalem", "Capernaum"]
+  },
+  {
+    "question": "Who was the first person to be murdered in the Bible?",
+    "correct_answer": "Abel",
+    "incorrect_answers": ["Cain", "Isaac", "Esau"]
+  },
+  {
+    "question": "What did God create on the first day?",
+    "correct_answer": "Light",
+    "incorrect_answers": ["Heaven and earth", "Plants", "Animals"]
+  },
+  {
+    "question": "Who was the father of Jacob?",
+    "correct_answer": "Isaac",
+    "incorrect_answers": ["Abraham", "Noah", "Joseph"]
+  },
+  {
+    "question": "What is the last word in the Bible?",
+    "correct_answer": "Amen",
+    "incorrect_answers": ["God", "Peace", "Love"]
+  },
+  {
+    "question": "Who interpreted the writing on the wall for King Belshazzar?",
+    "correct_answer": "Daniel",
+    "incorrect_answers": ["Ezekiel", "Isaiah", "Jeremiah"]
+  },
+  {
+    "question": "What did God use to speak to Moses in the wilderness?",
+    "correct_answer": "A burning bush",
+    "incorrect_answers": ["A cloud", "A dream", "A vision"]
+  },
+  {
+    "question": "Who led the Israelites after Moses died?",
+    "correct_answer": "Joshua",
+    "incorrect_answers": ["Aaron", "Caleb", "Gideon"]
+  },
+  {
+    "question": "What was the name of Abraham’s first son?",
+    "correct_answer": "Ishmael",
+    "incorrect_answers": ["Isaac", "Esau", "Jacob"]
+  },
+  {
+    "question": "Who wrote the book of Revelation?",
+    "correct_answer": "John",
+    "incorrect_answers": ["Paul", "Peter", "James"]
+  },
+  {
+    "question": "Who was turned into a pillar of salt?",
+    "correct_answer": "Lot’s wife",
+    "incorrect_answers": ["Sarah", "Rachel", "Miriam"]
+  },
+  {
+    "question": "How many days did God take to create the world?",
+    "correct_answer": "6",
+    "incorrect_answers": ["7", "5", "8"]
+  },
+  {
+    "question": "On what day did God rest?",
+    "correct_answer": "The seventh day",
+    "incorrect_answers": ["The sixth day", "The fifth day", "The eighth day"]
+  },
+  {
+    "question": "What food did God provide the Israelites in the wilderness?",
+    "correct_answer": "Manna",
+    "incorrect_answers": ["Bread", "Fish", "Corn"]
+  },
+  {
+    "question": "Who built the ark of the covenant?",
+    "correct_answer": "Bezalel",
+    "incorrect_answers": ["Moses", "Aaron", "Joshua"]
+  },
+  {
+    "question": "Who was the mother of Samuel?",
+    "correct_answer": "Hannah",
+    "incorrect_answers": ["Rachel", "Leah", "Elizabeth"]
+  },
+  {
+    "question": "Who fought with an angel until daybreak?",
+    "correct_answer": "Jacob",
+    "incorrect_answers": ["Esau", "David", "Joseph"]
+  },
+  {
+    "question": "Who dreamed of a ladder reaching to heaven?",
+    "correct_answer": "Jacob",
+    "incorrect_answers": ["Joseph", "Daniel", "Isaiah"]
+  },
+  {
+    "question": "What did Joseph’s brothers sell him for?",
+    "correct_answer": "20 pieces of silver",
+    "incorrect_answers": ["30 pieces of gold", "10 pieces of silver", "40 pieces of silver"]
+  },
+  {
+    "question": "What did Jesus ride into Jerusalem?",
+    "correct_answer": "A donkey",
+    "incorrect_answers": ["A horse", "A camel", "A chariot"]
+  },
+  {
+    "question": "What did Jesus do at the Last Supper?",
+    "correct_answer": "Broke bread and shared wine",
+    "incorrect_answers": ["Washed feet", "Prayed in silence", "Gave a sermon"]
+  },
+  {
+    "question": "Who carried Jesus’ cross?",
+    "correct_answer": "Simon of Cyrene",
+    "incorrect_answers": ["Peter", "John", "Joseph of Arimathea"]
+  },
+  {
+    "question": "Where was Jesus crucified?",
+    "correct_answer": "Golgotha",
+    "incorrect_answers": ["Nazareth", "Bethlehem", "Jericho"]
+  },
+  {
+    "question": "What did Jesus say on the cross before He died?",
+    "correct_answer": "It is finished",
+    "incorrect_answers": ["I am risen", "Forgive them", "Into your hands I commit my spirit"]
+  },
+  {
+    "question": "Who was the Roman governor that sentenced Jesus?",
+    "correct_answer": "Pontius Pilate",
+    "incorrect_answers": ["Herod", "Caesar", "Felix"]
+  },
+  {
+    "question": "How many days after His death did Jesus rise again?",
+    "correct_answer": "3",
+    "incorrect_answers": ["2", "4", "7"]
+  },
+  {
+    "question": "Who was the first Christian martyr?",
+    "correct_answer": "Stephen",
+    "incorrect_answers": ["Peter", "Paul", "James"]
+  },
+  {
+    "question": "Who saw a vision of Jesus on the road to Damascus?",
+    "correct_answer": "Saul (Paul)",
+    "incorrect_answers": ["Peter", "Philip", "Barnabas"]
+  },
+  {
+    "question": "Who wrote the Acts of the Apostles?",
+    "correct_answer": "Luke",
+    "incorrect_answers": ["Paul", "John", "Mark"]
+  },
+  {
+    "question": "What did the Holy Spirit appear as on Pentecost?",
+    "correct_answer": "Tongues of fire",
+    "incorrect_answers": ["A dove", "A cloud", "A bright light"]
+  },
+  {
+    "question": "Who was Abraham’s wife?",
+    "correct_answer": "Sarah",
+    "incorrect_answers": ["Rachel", "Rebekah", "Leah"]
+  },
+  {
+    "question": "Who betrayed Samson to the Philistines?",
+    "correct_answer": "Delilah",
+    "incorrect_answers": ["Bathsheba", "Esther", "Ruth"]
+  },
+  {
+    "question": "What river did the Israelites cross to enter the Promised Land?",
+    "correct_answer": "Jordan",
+    "incorrect_answers": ["Nile", "Euphrates", "Tigris"]
+  },
+  {
+    "question": "What did God give the Israelites to drink from a rock?",
+    "correct_answer": "Water",
+    "incorrect_answers": ["Wine", "Milk", "Honey"]
+  },
+  {
+    "question": "Who anointed David as king?",
+    "correct_answer": "Samuel",
+    "incorrect_answers": ["Nathan", "Elijah", "Gad"]
+  },
+  {
+    "question": "What was David’s profession before becoming king?",
+    "correct_answer": "Shepherd",
+    "incorrect_answers": ["Fisherman", "Farmer", "Carpenter"]
+  },
+  {
+    "question": "Who prayed in the lion’s den?",
+    "correct_answer": "Daniel",
+    "incorrect_answers": ["Elijah", "Ezra", "Nehemiah"]
+  },
+  {
+    "question": "How many days did God flood the earth?",
+    "correct_answer": "40",
+    "incorrect_answers": ["20", "60", "100"]
+  },
+  {
+    "question": "Who was the first king of Israel?",
+    "correct_answer": "Saul",
+    "incorrect_answers": ["David", "Solomon", "Samuel"]
+  },
+  {
+    "question": "What language was most of the Old Testament written in?",
+    "correct_answer": "Hebrew",
+    "incorrect_answers": ["Greek", "Latin", "Aramaic"]
+  },
+  {
+    "question": "What language was most of the New Testament written in?",
+    "correct_answer": "Greek",
+    "incorrect_answers": ["Hebrew", "Latin", "Syriac"]
+  },
+
+  // 10 Questions on Women in the Bible
+  {
+    "question": "Who was the first woman created?",
+    "correct_answer": "Eve",
+    "incorrect_answers": ["Sarah", "Miriam", "Deborah"]
+  },
+  {
+    "question": "Who was Abraham’s wife?",
+    "correct_answer": "Sarah",
+    "incorrect_answers": ["Rachel", "Rebekah", "Leah"]
+  },
+  {
+    "question": "Who was the mother of Samuel?",
+    "correct_answer": "Hannah",
+    "incorrect_answers": ["Ruth", "Esther", "Deborah"]
+  },
+  {
+    "question": "Who was the queen that risked her life to save her people?",
+    "correct_answer": "Esther",
+    "incorrect_answers": ["Bathsheba", "Miriam", "Naomi"]
+  },
+  {
+    "question": "Who was Ruth’s mother-in-law?",
+    "correct_answer": "Naomi",
+    "incorrect_answers": ["Hannah", "Deborah", "Mary"]
+  },
+  {
+    "question": "Who was Bathsheba’s husband before David?",
+    "correct_answer": "Uriah",
+    "incorrect_answers": ["Joab", "Nathan", "Saul"]
+  },
+  {
+    "question": "Who sat at Jesus’ feet while her sister worked?",
+    "correct_answer": "Mary of Bethany",
+    "incorrect_answers": ["Martha", "Elizabeth", "Salome"]
+  },
+  {
+    "question": "Who was the first person to see the risen Jesus?",
+    "correct_answer": "Mary Magdalene",
+    "incorrect_answers": ["Peter", "John", "Thomas"]
+  },
+  {
+    "question": "Who was Moses’ sister?",
+    "correct_answer": "Miriam",
+    "incorrect_answers": ["Deborah", "Ruth", "Leah"]
+  },
+  {
+    "question": "Who judged Israel and was also a prophetess?",
+    "correct_answer": "Deborah",
+    "incorrect_answers": ["Esther", "Huldah", "Hannah"]
+  },
+
+  // 10 Questions on Prophets
+  {
+    "question": "Who confronted King Ahab and Queen Jezebel?",
+    "correct_answer": "Elijah",
+    "incorrect_answers": ["Elisha", "Isaiah", "Jeremiah"]
+  },
+  {
+    "question": "Who succeeded Elijah as a prophet?",
+    "correct_answer": "Elisha",
+    "incorrect_answers": ["Jeremiah", "Hosea", "Amos"]
+  },
+  {
+    "question": "Which prophet was thrown into a cistern?",
+    "correct_answer": "Jeremiah",
+    "incorrect_answers": ["Isaiah", "Ezekiel", "Daniel"]
+  },
+  {
+    "question": "Who saw a vision of dry bones coming to life?",
+    "correct_answer": "Ezekiel",
+    "incorrect_answers": ["Daniel", "Isaiah", "Hosea"]
+  },
+  {
+    "question": "Which prophet was called as a child?",
+    "correct_answer": "Samuel",
+    "incorrect_answers": ["Isaiah", "Jeremiah", "Jonah"]
+  },
+  {
+    "question": "Who prophesied the virgin birth of Jesus?",
+    "correct_answer": "Isaiah",
+    "incorrect_answers": ["Micah", "Jeremiah", "Zechariah"]
+  },
+  {
+    "question": "Who ran away when called to Nineveh?",
+    "correct_answer": "Jonah",
+    "incorrect_answers": ["Nahum", "Obadiah", "Amos"]
+  },
+  {
+    "question": "Who saw a vision of the Lord in the temple?",
+    "correct_answer": "Isaiah",
+    "incorrect_answers": ["Ezekiel", "Daniel", "Jeremiah"]
+  },
+  {
+    "question": "Who was called the ‘weeping prophet’?",
+    "correct_answer": "Jeremiah",
+    "incorrect_answers": ["Isaiah", "Ezekiel", "Micah"]
+  },
+  {
+    "question": "Who predicted the coming of the Messiah in Bethlehem?",
+    "correct_answer": "Micah",
+    "incorrect_answers": ["Amos", "Hosea", "Malachi"]
+  },
+
+  // 5 Questions on Creation of the World
+  {
+    "question": "What did God create on the first day?",
+    "correct_answer": "Light",
+    "incorrect_answers": ["Land", "Animals", "Sun and Moon"]
+  },
+  {
+    "question": "On which day did God create man?",
+    "correct_answer": "Sixth day",
+    "incorrect_answers": ["Fourth day", "Fifth day", "Seventh day"]
+  },
+  {
+    "question": "What did God create on the second day?",
+    "correct_answer": "The sky",
+    "incorrect_answers": ["The land", "The sun", "The animals"]
+  },
+  {
+    "question": "What did God do on the seventh day?",
+    "correct_answer": "He rested",
+    "incorrect_answers": ["Created man", "Created the animals", "Created plants"]
+  },
+  {
+    "question": "What were the names of the first humans?",
+    "correct_answer": "Adam and Eve",
+    "incorrect_answers": ["Cain and Abel", "Abraham and Sarah", "Noah and Naamah"]
+  },
+
+  // 3 Questions on Judges
+  {
+    "question": "Who was the only female judge of Israel?",
+    "correct_answer": "Deborah",
+    "incorrect_answers": ["Jael", "Hannah", "Ruth"]
+  },
+  {
+    "question": "Who defeated the Midianites with only 300 men?",
+    "correct_answer": "Gideon",
+    "incorrect_answers": ["Samson", "Jephthah", "Barak"]
+  },
+  {
+    "question": "Which judge was known for his great strength?",
+    "correct_answer": "Samson",
+    "incorrect_answers": ["Ehud", "Othniel", "Shamgar"]
+  },
+
+  // 5 Questions on the Disciples of Jesus
+  {
+    "question": "Who was a tax collector before following Jesus?",
+    "correct_answer": "Matthew",
+    "incorrect_answers": ["Peter", "John", "Andrew"]
+  },
+  {
+    "question": "Who was the disciple known as the ‘doubter’?",
+    "correct_answer": "Thomas",
+    "incorrect_answers": ["Peter", "Philip", "Bartholomew"]
+  },
+  {
+    "question": "Which disciple denied Jesus three times?",
+    "correct_answer": "Peter",
+    "incorrect_answers": ["John", "James", "Andrew"]
+  },
+  {
+    "question": "Who was the disciple whom Jesus loved?",
+    "correct_answer": "John",
+    "incorrect_answers": ["Matthew", "Thomas", "James"]
+  },
+  {
+    "question": "Who betrayed Jesus with a kiss?",
+    "correct_answer": "Judas Iscariot",
+    "incorrect_answers": ["Philip", "Bartholomew", "Simon the Zealot"]
+  },
+
+  // 5 Questions on the Ten Commandments
+  {
+    "question": "Where did God give Moses the Ten Commandments?",
+    "correct_answer": "Mount Sinai",
+    "incorrect_answers": ["Mount Zion", "Mount Nebo", "Mount Carmel"]
+  },
+  {
+    "question": "What is the first commandment?",
+    "correct_answer": "You shall have no other gods before Me",
+    "incorrect_answers": ["Honor your father and mother", "Do not murder", "Remember the Sabbath day"]
+  },
+  {
+    "question": "Which commandment forbids stealing?",
+    "correct_answer": "Eighth",
+    "incorrect_answers": ["Sixth", "Seventh", "Ninth"]
+  },
+  {
+    "question": "What is the commandment about the Sabbath?",
+    "correct_answer": "Remember the Sabbath day and keep it holy",
+    "incorrect_answers": ["Do not covet", "Honor your father and mother", "You shall not kill"]
+  },
+  {
+    "question": "Which commandment forbids lying?",
+    "correct_answer": "Ninth",
+    "incorrect_answers": ["Fourth", "Sixth", "Tenth"]
+  },
+
+  // 5 Questions on Books of the Bible
+  {
+    "question": "What is the first book of the Old Testament?",
+    "correct_answer": "Genesis",
+    "incorrect_answers": ["Exodus", "Leviticus", "Numbers"]
+  },
+  {
+    "question": "What is the last book of the New Testament?",
+    "correct_answer": "Revelation",
+    "incorrect_answers": ["Jude", "Hebrews", "Acts"]
+  },
+  {
+    "question": "How many books are in the New Testament?",
+    "correct_answer": "27",
+    "incorrect_answers": ["39", "40", "66"]
+  },
+  {
+    "question": "How many total books are in the Protestant Bible?",
+    "correct_answer": "66",
+    "incorrect_answers": ["72", "70", "73"]
+  },
+  {
+    "question": "Which book tells about the early church after Jesus’ ascension?",
+    "correct_answer": "Acts",
+    "incorrect_answers": ["Romans", "Luke", "Matthew"]
+  }
+]
+
+
+
+
+
