@@ -115,7 +115,7 @@
 
     async function fetchQuestions() {
       try {
-        const res = await fetch('https://chyanalyst.github.io/APP/bible.json');
+        const res = await fetch('https://chyanalyst.github.io/APP/bible-trivia.json');
         questions = await res.json();
         shuffleArray(questions);
         loadQuestion();
