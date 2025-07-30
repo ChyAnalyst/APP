@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bible Trivia Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .quiz-container {
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(31,38,135,0.37);
+    }
+    h1 { margin-bottom: 20px; }
+    #progress { margin-bottom: 15px; }
+    .question { font-size: 1.2rem; margin-bottom: 20px; }
+    .answers { list-style: none; padding: 0; margin-bottom: 20px; }
+    .answers li { margin: 10px 0; }
+    .answers button {
+      width: 100%; padding: 12px;
+      border-radius: 12px; border: none;
+      background: rgba(255,255,255,0.1);
+      color: #fff; font-size: 1rem;
+      cursor: pointer; transition: 0.3s;
+    }
+    .answers button:hover { background: rgba(255,255,255,0.3); }
+    #next, #restart {
+      margin-top: 10px;
+      padding: 12px 24px;
+      border: none; border-radius: 50px;
+      background: #ff6b6b; color: #fff;
+      font-size: 1rem; font-weight: bold;
+      cursor: pointer; transition: 0.3s;
+    }
+    #next:hover, #restart:hover { background: #ff4757; }
+    #restart { display: none; }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Bible Trivia Quiz</h1>
+    <p id="progress">Loading questions...</p>
+    <p class="question"></p>
+    <ul class="answers"></ul>
+    <button id="next">Next</button>
+    <button id="restart">Restart Quiz</button>
+  </div>
+
+  <script>
+    const questionEl = document.querySelector('.question');
+    const answersEl = document.querySelector('.answers');
+    const nextBtn = document.getElementById('next');
+    const restartBtn = document.getElementById('restart');
+    const progressEl = document.getElementById('progress');
+
+    let questions = [];
+    let currentQuestion = {};
+    let score = 0;
+    let questionIndex = 0;
+
+    async function fetchQuestions() {
+      try {
+        progressEl.textContent = "⏳ Fetching questions...";
+        const res = await fetch("https://chyanalyst.github.io/APP/bibletrivia.json");
+        if (!res.ok) throw new Error("HTTP error " + res.status);
+        questions = await res.json();
+        console.log("Questions loaded:", questions.length);
+        if (!Array.isArray(questions)) throw new Error("Invalid JSON structure");
+        questionIndex = 0;
+        score = 0;
+        loadQuestion();
+      } catch (err) {
+        console.error("❌ Error loading questions:", err);
+        progressEl.textContent = "❌ Could not load questions. Check console.";
+        nextBtn.style.display = "none";
+      }
+    }
+
+    function loadQuestion() {
+      if (questionIndex >= questions.length) {
+        questionEl.innerHTML = `🎉 You scored <strong>${score}</strong> out of <strong>${questions.length}</strong>`;
+        progressEl.textContent = "";
+        answersEl.innerHTML = "";
+        nextBtn.style.display = "none";
+        restartBtn.style.display = "inline-block";
+        return;
+      }
+
+      currentQuestion = questions[questionIndex];
+      progressEl.textContent = `Question ${questionIndex + 1} of ${questions.length}`;
+      questionEl.textContent = currentQuestion.question;
+      answersEl.innerHTML = "";
+
+      const answers = [...currentQuestion.incorrect_answers, currentQuestion.correct_answer];
+      answers.sort(() => Math.random() - 0.5);
+
+      answers.forEach(answer => {
+        const li = document.createElement("li");
+        const btn = document.createElement("button");
+        btn.textContent = answer;
+        btn.onclick = () => selectAnswer(answer, btn);
+        li.appendChild(btn);
+        answersEl.appendChild(li);
+      });
+    }
+
+    function selectAnswer(answer, btn) {
+      const correct = answer === currentQuestion.correct_answer;
+      if (correct) {
+        score++;
+        btn.style.background = "#2ed573";
+      } else {
+        btn.style.background = "#ff4757";
+        [...answersEl.querySelectorAll("button")].forEach(b => {
+          if (b.textContent === currentQuestion.correct_answer) {
+            b.style.background = "#2ed573";
+          }
+        });
+      }
+      [...answersEl.querySelectorAll("button")].forEach(b => b.disabled = true);
+    }
+
+    nextBtn.onclick = () => {
+      questionIndex++;
+      loadQuestion();
+    };
+
+    restartBtn.onclick = () => {
+      restartBtn.style.display = "none";
+      nextBtn.style.display = "inline-block";
+      fetchQuestions();
+    };
+
+    fetchQuestions();
+  </script>
+</body>
+</html>
