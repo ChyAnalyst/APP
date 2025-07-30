@@ -109,6 +109,12 @@
       transform: translateY(-3px);
     }
 
+    .buttons-container {
+      display: flex;
+      justify-content: flex-end; /* Align Next button to the right */
+      margin-top: 15px;
+    }
+
     #next, #restart {
       background: linear-gradient(135deg, var(--african-violet), var(--ultra-violet));
       border: none;
@@ -119,7 +125,6 @@
       color: var(--white);
       font-weight: 600;
       transition: all 0.3s ease;
-      margin-top: 15px;
       box-shadow: 0 5px 15px rgba(35, 25, 66, 0.4);
     }
     #next:hover, #restart:hover {
@@ -127,19 +132,16 @@
       background: var(--pink-lavender);
       color: var(--russian-violet);
     }
-    #restart { display: none; }
+    #restart { 
+      display: none;
+      margin: 15px auto; /* Center Restart button */
+    }
 
     .feedback {
       margin-top: 15px;
       font-size: 1.1rem;
       font-weight: 600;
       color: var(--pink-lavender);
-    }
-
-    @media(max-width: 600px) {
-      .quiz-container { padding: 25px 20px; }
-      h1 { font-size: 1.7rem; }
-      .question { font-size: 1.1rem; }
     }
   </style>
 </head>
@@ -152,7 +154,9 @@
       <p class="question">Loading question...</p>
       <ul class="answers"></ul>
       <p class="feedback"></p>
-      <button id="next">Next Question</button>
+      <div class="buttons-container">
+        <button id="next">Next Question ➡️</button>
+      </div>
       <button id="restart">Restart Quiz</button>
     </div>
   </div>
@@ -197,7 +201,7 @@
       if (questionIndex >= questions.length) {
         questionEl.innerHTML = `🎉 You scored <strong>${score}</strong> out of <strong>${questions.length}</strong>`;
         nextBtn.style.display = 'none';
-        restartBtn.style.display = 'inline-block';
+        restartBtn.style.display = 'block'; // Show Restart button
         progressBar.style.width = "100%";
         trackerEl.innerHTML = "Quiz Completed!";
         return;
@@ -270,3 +274,4 @@
   </script>
 </body>
 </html>
+
