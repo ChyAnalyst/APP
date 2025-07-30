@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bible Trivia Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --russian-violet: #231942;
+      --ultra-violet: #5e548e;
+      --african-violet: #9f86c0;
+      --lilac: #be95c4;
+      --pink-lavender: #e0b1cb;
+      --correct-green: #4caf50;
+      --wrong-red: #e63946;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--russian-violet), var(--ultra-violet));
+      color: var(--white);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container { max-width: 700px; width: 100%; }
+
+    .level-select, .quiz-container, .countdown-container {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0px 6px 20px rgba(0,0,0,0.3);
+      display: none;
+    }
+    .level-select.active, .quiz-container.active, .countdown-container.active { display: block; }
+
+    h1 { margin-bottom: 15px; color: var(--pink-lavender); }
+
+    .levels-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+    }
+    .level-btn {
+      padding: 20px;
+      border-radius: 12px;
+      border: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      background: var(--ultra-violet);
+      color: var(--white);
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .level-btn.locked {
+      background: gray;
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+    .level-btn span {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+    .padlock {
+      font-size: 1.5rem;
+    }
+    .level-btn:hover:not(.locked) { background: var(--pink-lavender); color: var(--russian-violet); }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      background: rgba(255,255,255,0.1);
+      padding: 12px 20px;
+      border-radius: 12px;
+    }
+
+    .header-center {
+      font-size: 1.2rem;
+      font-weight: bold;
+      font-family: 'Poppins', sans-serif;
+      color: var(--white);
+    }
+
+    .tracker { font-weight: bold; font-size: 1.2rem; color: var(--pink-lavender); }
+
+    .timer-wrapper {
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+    .timer-circle { transform: rotate(-90deg); }
+    .timer-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--white);
+    }
+
+    .question { font-size: 1.3rem; margin-bottom: 20px; font-weight: 600; }
+
+    .answers { list-style: none; padding: 0; margin-bottom: 30px; }
+    .answers li { margin: 10px 0; }
+
+    .answers button {
+      width: 100%;
+      padding: 15px;
+      background: var(--white);
+      border-radius: 50px;
+      border: none;
+      color: var(--ultra-violet);
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+    }
+    .answers button:hover { background: var(--pink-lavender); color: var(--russian-violet); }
+
+    .buttons-container { display: flex; justify-content: center; }
+
+    #next {
+      padding: 14px 40px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--african-violet), var(--ultra-violet));
+      color: var(--white);
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease;
+    }
+    #next:hover { transform: scale(1.05); }
+
+    /* Result Modal */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.3s;
+    }
+    .modal.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .modal-content {
+      background: #fff;
+      color: #333;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+    .modal-content h2 { margin: 0 0 15px; }
+    .modal-content p { margin-bottom: 20px; }
+    .modal-content button {
+      padding: 12px 25px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      margin: 5px;
+      font-weight: 600;
+      background: var(--ultra-violet);
+      color: var(--white);
+      transition: 0.3s;
+    }
+    .modal-content button:hover {
+      background: var(--pink-lavender);
+      color: var(--russian-violet);
+    }
+
+    /* Countdown Page */
+    .countdown-container h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--pink-lavender);
+    }
+    .countdown-number {
+      font-size: 4rem;
+      font-weight: bold;
+      color: var(--white);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Level Select Screen -->
+    <div id="levelSelect" class="level-select active">
+      <h1>Bible Trivia Quiz</h1>
+      <div class="levels-grid" id="levelsGrid"></div>
+    </div>
+
+    <!-- Countdown Screen -->
+    <div id="countdownContainer" class="countdown-container">
+      <h2>Get Ready!</h2>
+      <div class="countdown-number" id="countdownNumber">3</div>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quizContainer" class="quiz-container">
+      <div class="header">
+        <div id="tracker" class="tracker">1/5</div>
+        <div class="header-center" id="levelTitle">Bible Trivia - Level 1</div>
+        <div class="timer-wrapper">
+          <svg class="timer-circle" width="80" height="80">
+            <circle cx="40" cy="40" r="35" stroke="#be95c4" stroke-width="6" fill="none" />
+            <circle id="timerBar" cx="40" cy="40" r="35" stroke="#ffffff" stroke-width="6" fill="none"
+              stroke-dasharray="220" stroke-dashoffset="0" />
+          </svg>
+          <div class="timer-text" id="timerText">00:60</div>
+        </div>
+      </div>
+
+      <p class="question" id="question">Loading...</p>
+      <ul class="answers" id="answers"></ul>
+      <div class="buttons-container">
+        <button id="next">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Result Modal -->
+  <div id="resultModal" class="modal">
+    <div class="modal-content">
+      <h2 id="resultTitle">Level Finished!</h2>
+      <p id="resultMessage"></p>
+      <button id="tryAgain">Try Again</button>
+      <button id="backToLevels">Back to Levels</button>
+    </div>
+  </div>
+
+  <script>
+    const levelSelect = document.getElementById('levelSelect');
+    const levelsGrid = document.getElementById('levelsGrid');
+    const quizContainer = document.getElementById('quizContainer');
+    const trackerEl = document.getElementById('tracker');
+    const levelTitle = document.getElementById('levelTitle');
+    const timerText = document.getElementById('timerText');
+    const timerBar = document.getElementById('timerBar');
+    const questionEl = document.getElementById('question');
+    const answersEl = document.getElementById('answers');
+    const nextBtn = document.getElementById('next');
+    const countdownContainer = document.getElementById('countdownContainer');
+    const countdownNumber = document.getElementById('countdownNumber');
+
+    const modal = document.getElementById('resultModal');
+    const resultMessage = document.getElementById('resultMessage');
+    const tryAgainBtn = document.getElementById('tryAgain');
+    const backToLevelsBtn = document.getElementById('backToLevels');
+
+    let data = {};
+    let currentLevel = 0;
+    let questionIndex = 0;
+    let score = 0;
+    let unlockedLevels = 1;
+    let timer;
+    let timeLeft = 60;
+    const circleLength = 220;
+
+    async function fetchQuestions() {
+      try {
+        const res = await fetch('https://chyanalyst.github.io/APP/bible_trivia_20_levels.json');
+        data = await res.json();
+        renderLevels();
+      } catch (err) {
+        console.error(err);
+        questionEl.innerHTML = "❌ Failed to load questions.";
+      }
+    }
+
+    function renderLevels() {
+      levelsGrid.innerHTML = '';
+      data.levels.forEach((lvl, idx) => {
+        const btn = document.createElement('button');
+        btn.classList.add('level-btn');
+        const levelLabel = document.createElement('span');
+        levelLabel.innerText = `Level ${lvl.level}`;
+        btn.appendChild(levelLabel);
+
+        if (idx + 1 > unlockedLevels) {
+          btn.classList.add('locked');
+          const lockIcon = document.createElement('div');
+          lockIcon.classList.add('padlock');
+          lockIcon.innerText = '🔒';
+          btn.appendChild(lockIcon);
+        } else {
+          btn.addEventListener('click', () => showCountdown(idx));
+        }
+
+        levelsGrid.appendChild(btn);
+      });
+    }
+
+    function showCountdown(levelIndex) {
+      levelSelect.classList.remove('active');
+      quizContainer.classList.remove('active');
+      modal.classList.remove('active');
+      countdownContainer.classList.add('active');
+      countdownNumber.innerText = 3;
+
+      let count = 3;
+      const interval = setInterval(() => {
+        count--;
+        countdownNumber.innerText = count;
+        if (count === 0) {
+          clearInterval(interval);
+          countdownContainer.classList.remove('active');
+          startLevel(levelIndex);
+        }
+      }, 1000);
+    }
+
+    function startLevel(levelIndex) {
+      currentLevel = levelIndex;
+      questionIndex = 0;
+      score = 0;
+      levelTitle.innerText = `Bible Trivia - Level ${currentLevel + 1}`;
+      quizContainer.classList.add('active');
+      loadQuestion();
+    }
+
+    function loadQuestion() {
+      const levelData = data.levels[currentLevel];
+      const currentQuestion = levelData.questions[questionIndex];
+      resetTimer();
+
+      trackerEl.innerText = `${questionIndex + 1}/${levelData.questions.length}`;
+      questionEl.innerHTML = currentQuestion.question;
+      answersEl.innerHTML = '';
+
+      const answers = [...currentQuestion.incorrect_answers];
+      answers.splice(Math.floor(Math.random() * (answers.length + 1)), 0, currentQuestion.correct_answer);
+
+      answers.forEach(answer => {
+        const li = document.createElement('li');
+        const btn = document.createElement('button');
+        btn.innerText = answer;
+        btn.addEventListener('click', () => selectAnswer(answer, currentQuestion.correct_answer, btn));
+        li.appendChild(btn);
+        answersEl.appendChild(li);
+      });
+    }
+
+    function selectAnswer(answer, correctAnswer, btn) {
+      clearInterval(timer);
+      if (answer === correctAnswer) {
+        score++;
+        btn.style.background = 'var(--correct-green)';
+        btn.style.color = '#fff';
+      } else {
+        btn.style.background = 'var(--wrong-red)';
+        btn.style.color = '#fff';
+        document.querySelectorAll('.answers button').forEach(b => {
+          if (b.innerText === correctAnswer) {
+            b.style.background = 'var(--correct-green)';
+            b.style.color = '#fff';
+          }
+        });
+      }
+      document.querySelectorAll('.answers button').forEach(b => b.disabled = true);
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timeLeft = 60;
+      updateTimerDisplay();
+      timerBar.style.strokeDashoffset = 0;
+      timer = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        timerBar.style.strokeDashoffset = circleLength * (1 - timeLeft / 60);
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          nextBtn.click();
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      timerText.innerText = `00:${timeLeft < 10 ? '0' + timeLeft : timeLeft}`;
+    }
+
+    nextBtn.addEventListener('click', () => {
+      const levelData = data.levels[currentLevel];
+      if (questionIndex < levelData.questions.length - 1) {
+        questionIndex++;
+        loadQuestion();
+      } else {
+        modal.classList.add('active');
+        if (score === levelData.questions.length) {
+          unlockedLevels = Math.max(unlockedLevels, currentLevel + 2);
+          resultMessage.innerText = `🎉 Perfect! You scored ${score}/${levelData.questions.length} and unlocked the next level!`;
+        } else {
+          resultMessage.innerText = `You scored ${score}/${levelData.questions.length}. You need to answer all questions correctly to unlock the next level.`;
+        }
+      }
+    });
+
+    tryAgainBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+      quizContainer.classList.remove('active');
+      showCountdown(currentLevel);
+    });
+
+    backToLevelsBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+      quizContainer.classList.remove('active');
+      levelSelect.classList.add('active');
+      renderLevels();
+    });
+
+    fetchQuestions();
+  </script>
+</body>
+</html>
